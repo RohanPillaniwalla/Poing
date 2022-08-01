@@ -14,14 +14,18 @@ public class PaddleMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //checking for player1
         if(isPlayer1)
         {
+            //get vertical from input
             movement = Input.GetAxisRaw("Vertical");
         }else
         {
+            //get vertical2 from input
             movement = Input.GetAxisRaw("Vertical2");
         }
 
+        //modify the velocity of the gameobject on y axis only
         rb.velocity = new Vector2(rb.velocity.x, speed * movement);
     }
 }
