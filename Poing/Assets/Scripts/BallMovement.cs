@@ -5,6 +5,7 @@ using UnityEngine;
 public class BallMovement : MonoBehaviour
 {
     public Rigidbody2D rb;
+    public Vector3 ballStartPosition;
 
     private float speed = 5f;
 
@@ -12,6 +13,7 @@ public class BallMovement : MonoBehaviour
     void Start()
     {
         //calling the BallLauncher
+        ballStartPosition = transform.position;
         BallLauncher();
     }
 
@@ -23,5 +25,14 @@ public class BallMovement : MonoBehaviour
 
         //giving velocity to ball in certain direction
         rb.velocity = new Vector2(speed * x, speed * y);
+    }
+
+    //Reset the position of ball
+    // launch after position reset
+    public void BallReset()
+    {
+        rb.velocity = Vector2.zero;
+        transform.position = ballStartPosition;
+        BallLauncher();
     }
 }

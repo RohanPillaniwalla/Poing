@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PaddleMovement : MonoBehaviour
@@ -9,8 +7,12 @@ public class PaddleMovement : MonoBehaviour
 
     public Rigidbody2D rb;
     public bool isPlayer1;
-   
+    public Vector3 paddleStartPosition;
 
+    void Start()
+    {
+        paddleStartPosition = transform.position;
+    }
     // Update is called once per frame
     void Update()
     {
@@ -27,5 +29,12 @@ public class PaddleMovement : MonoBehaviour
 
         //modify the velocity of the gameobject on y axis only
         rb.velocity = new Vector2(rb.velocity.x, speed * movement);
+    }
+
+    //Reset the position of paddles
+    public void PaddleReset()
+    {
+        rb.velocity = Vector2.zero;
+        transform.position = paddleStartPosition;
     }
 }
